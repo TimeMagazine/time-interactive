@@ -1,10 +1,9 @@
-const path = require('path');
 const webpack = require('webpack'); //to access built-in plugins
+const autoprefixer = require('autoprefixer')
 
 const config = {
   entry: './debug.js',
   output: {
-    // path: path.resolve(__dirname, '../dist'),
     filename: './script-min.js'
   },
   module: {
@@ -24,15 +23,15 @@ const config = {
       },
       { 
           test: /\.css$/,
-          loaders: [ 'style-loader', 'css-loader', 'autoprefixer-loader' ]
+          loaders: [ 'style-loader', 'css-loader', 'postcss-loader' ]
       },
       { 
           test: /\.less$/,
-          loaders: [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'less-loader' ]
+          loaders: [ 'style-loader', 'css-loader', 'less-loader', 'postcss-loader' ]
       },
       {
           test: /\.scss$/,
-          loaders: [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'sass-loader' ]
+          loaders: [ 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader' ]
       },
       { 
           test: /\.html$/,
@@ -47,7 +46,8 @@ const config = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
         minimize: true,
-        debug: false
+        debug: false,
+        options: { postcss: [ autoprefixer ] }        
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

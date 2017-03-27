@@ -1,24 +1,20 @@
-const path = require('path');
 const webpack = require('webpack'); //to access built-in plugins
-
-//process.traceDeprecation = true;
+const autoprefixer = require('autoprefixer')
 
 const config = {
   entry: './debug.js',
   output: {
-    //path: __dirname,
     filename: './script.js'
   },
   devtool: 'inline-source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         options: {
           presets: [ [ 'es2015', { modules: false, loose: true  } ] ]
-
         }
       },
       {
@@ -27,15 +23,15 @@ const config = {
       },
       { 
           test: /\.css$/,
-          loaders: [ 'style-loader', 'css-loader', 'autoprefixer-loader' ]
+          loaders: [ 'style-loader', 'css-loader', 'postcss-loader' ]
       },
       { 
           test: /\.less$/,
-          loaders: [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'less-loader' ]
+          loaders: [ 'style-loader', 'css-loader', 'less-loader', 'postcss-loader' ]
       },
       {
           test: /\.scss$/,
-          loaders: [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'sass-loader' ]
+          loaders: [ 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader' ]
       },
       { 
           test: /\.html$/,
@@ -50,10 +46,10 @@ const config = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
         minimize: false,
-        debug: true
-        //devtool: 'inline-source-map'
+        debug: true,
+        options: { postcss: [ autoprefixer ] }
     })
- ]
+  ]
 };
 
 module.exports = config;

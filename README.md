@@ -4,7 +4,7 @@ Guide to Time.com Interactives
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.4.0a
+v0.4.1
 
 Our interactives at Time are developed independently from the CMS and bundled into self-assembling Javascript files using [webpack](https://webpack.github.io/). They are both discrete--requiring no dependencies--and discreet--interfering as little as possible with the rest of the page. 
 
@@ -15,6 +15,7 @@ This repository provides both a [command-line script](https://github.com/TimeMag
 Please see the [wiki](https://github.com/TimeMagazine/time-interactive/wiki) for instructions on installation and usage. 
 
 ## Update log
++ **v0.4.1**: Moved from auto-prefix loader to post-css
 + **v0.4.0a**: Now using webpack instead of the (heroic) browserify
 + **v0.3.2**: Restored blank screenshot and removal code
 + **v0.3.1**: Better onDocumentReady function
