@@ -40,7 +40,11 @@ const config = {
       {
           test: /\.(csv|tsv)$/,
           loaders: [ 'dsv-loader' ]
-      }
+      },
+      {
+          test: /\.(png|jpeg|jpg|gif)$/,
+          loaders: [ 'url-loader?limit=10000' ]
+      }      
     ]
   },
   plugins: [

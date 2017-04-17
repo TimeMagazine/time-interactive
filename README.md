@@ -4,17 +4,18 @@ Guide to Time.com Interactives
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.4.1
+v0.4.2
 
 Our interactives at Time are developed independently from the CMS and bundled into self-assembling Javascript files using [webpack](https://webpack.github.io/). They are both discrete--requiring no dependencies--and discreet--interfering as little as possible with the rest of the page. 
 
-The use of webpack loader, including [babel](https://babeljs.io/), allows developers to include all the (reasonably-sized) files they need in `debug.js`: HTML, CSS, LESS, SASS, and any modern Javascript conventions.
+The use of webpack loaders, including [babel](https://babeljs.io/), allows developers to include all the (reasonably-sized) files they need in `debug.js`: HTML, CSS, LESS, SASS, images, and any modern Javascript conventions.
 
 This repository provides both a [command-line script](https://github.com/TimeMagazine/time-interactive/blob/master/bin/generate.js) for generating new projects and a [client-side script](https://github.com/TimeMagazine/time-interactive/blob/master/index.js) with a few convenience functions.
 
 Please see the [wiki](https://github.com/TimeMagazine/time-interactive/wiki) for instructions on installation and usage. 
 
 ## Update log
++ **v0.4.2**: Added url-loader and code/ directory 
 + **v0.4.1**: Moved from auto-prefix loader to post-css
 + **v0.4.0a**: Now using webpack instead of the (heroic) browserify
 + **v0.3.2**: Restored blank screenshot and removal code
