@@ -1,13 +1,11 @@
 Source files for <%= interactive_id %>
 =====
 
-## Installation and setup
+## Sources
+Please link to any external data used
 
-See the [time-interactive wiki](https://github.com/TimeMagazine/time-interactive/wiki) for how to bootstrap a project.
+## Scripts
+Any CLI commands used or descriptions of code for cleaning and analyzing that data, all of which should live in the `/code` directory.
 
-## Description
-
-Please provide a short description of this project
-
-## Data
-Please link to any external data used, as well as scripts for cleaning and analyzing that data, all of which should live in the `/data` directory.
+## Notes
+All thank yous to open-source modules used and other ephemera

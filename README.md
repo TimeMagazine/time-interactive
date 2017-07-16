@@ -15,6 +15,7 @@ This repository provides both a [command-line script](https://github.com/TimeMag
 Please see the [wiki](https://github.com/TimeMagazine/time-interactive/wiki) for instructions on installation and usage. 
 
 ## Update log
++ **v0.4.3**: Switched from Typekit to Google Fonts and add R files to .gitignore
 + **v0.4.2**: Added url-loader and code/ directory 
 + **v0.4.1**: Moved from auto-prefix loader to post-css
 + **v0.4.0a**: Now using webpack instead of the (heroic) browserify
