@@ -22,16 +22,25 @@ const config = {
           loaders: [ 'json-loader' ]
       },
       { 
-          test: /\.css$/,
-          loaders: [ 'style-loader', 'css-loader', 'postcss-loader' ]
+        test: /\.css$/,
+        loaders: [
+          'style-loader', 'css-loader',
+          {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
+       ]
       },
       { 
           test: /\.less$/,
-          loaders: [ 'style-loader', 'css-loader', 'less-loader', 'postcss-loader' ]
+          loaders: [
+            'style-loader', 'css-loader', 
+            {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
+        ]
       },
       {
           test: /\.scss$/,
-          loaders: [ 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader' ]
+          loaders: [
+            'style-loader', 'css-loader',
+            {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
+        ]
       },
       { 
           test: /\.html$/,
@@ -48,11 +57,6 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false,
-        options: { postcss: [ autoprefixer ] }        
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
