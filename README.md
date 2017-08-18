@@ -4,7 +4,7 @@ Guide to Time.com Interactives
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.4.2
+v0.4.4
 
 Our interactives at Time are developed independently from the CMS and bundled into self-assembling Javascript files using [webpack](https://webpack.github.io/). They are both discrete--requiring no dependencies--and discreet--interfering as little as possible with the rest of the page. 
 
@@ -14,7 +14,13 @@ This repository provides both a [command-line script](https://github.com/TimeMag
 
 Please see the [wiki](https://github.com/TimeMagazine/time-interactive/wiki) for instructions on installation and usage. 
 
+Of the various built-in npm commands, one, `npm run analyze`, shows you which packages are contributing the most to your minified script. This requires a global install of [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
+
+	npm install -g webpack-bundle-size-analyzer
+
+
 ## Update log
++ **v0.4.4**: Fixed PossCSS Webpack config -- thx @pratheekrebala
 + **v0.4.3**: Switched from Typekit to Google Fonts and add R files to .gitignore
 + **v0.4.2**: Added url-loader and code/ directory 
 + **v0.4.1**: Moved from auto-prefix loader to post-css
