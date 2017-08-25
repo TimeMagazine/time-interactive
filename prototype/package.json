@@ -4,7 +4,7 @@
     "description": "",
     "repository": {},
     "dependencies": {
-        "time-interactive": "0.4.4"
+        "time-interactive": "0.4.5"
     },
     "scripts": {
         "build": "./node_modules/.bin/webpack --config webpack/dev.config.js",

@@ -1,6 +1,6 @@
 const webpack = require('webpack'); //to access built-in plugins
 const autoprefixer = require('autoprefixer')
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
   entry: './debug.js',
@@ -32,14 +32,14 @@ const config = {
       { 
           test: /\.less$/,
           loaders: [
-            'style-loader', 'css-loader', 
+            'style-loader', 'css-loader', 'less-loader'
             {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
          ]
       },
       {
           test: /\.scss$/,
           loaders: [
-            'style-loader', 'css-loader',
+            'style-loader', 'css-loader', 'sass-loader'
             {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
          ]
       },
