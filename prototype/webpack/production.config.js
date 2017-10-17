@@ -2,7 +2,7 @@ const webpack = require('webpack'); //to access built-in plugins
 const autoprefixer = require('autoprefixer')
 
 const config = {
-  entry: './debug.js',
+  entry: ['babel-polyfill', './debug.js'],
   output: {
     filename: './script-min.js'
   },

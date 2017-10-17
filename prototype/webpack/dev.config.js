@@ -3,7 +3,7 @@ const autoprefixer = require('autoprefixer')
 //const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
-  entry: './debug.js',
+  entry: ['babel-polyfill', './debug.js'],
   output: {
     filename: './script.js'
   },
