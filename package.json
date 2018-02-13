@@ -1,6 +1,6 @@
 {
   "name": "time-interactive",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Interactive bootstrap files for Time.com",
   "main": "index.js",
   "repository": {
@@ -14,7 +14,7 @@
     "minimist": "^1.2.0",
     "mkdirp": ">=0.5.1",
     "ncp": ">=2.0.0",
-    "npm-check-updates": "^2.13.0",
+    "npm-check-updates": "^2.14.0",
     "underscore": ">=1.8.3"
   },
   "author": {
