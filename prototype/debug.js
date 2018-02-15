@@ -2,7 +2,7 @@
 
 var time = require('time-interactive');
 
-require("./src/styles.less"); // this goes outside the callback since otherwise the interactive sometimes fires before the CSS is fully loaded
+require("./src/styles.scss"); // this goes outside the callback since otherwise the interactive sometimes fires before the CSS is fully loaded
 
 time("<%= interactive_id %>", function(interactive) {
 	"use strict";

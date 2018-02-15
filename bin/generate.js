@@ -36,7 +36,7 @@ var data = {
 var index = _.template(fs.readFileSync(__dirname + "/../prototype/index.html", "utf8")),
 	embed = _.template(fs.readFileSync(__dirname + "/../prototype/embed.html", "utf8")),
 	debug = _.template(fs.readFileSync(__dirname + "/../prototype/debug.js", "utf8")),
-	styles = _.template(fs.readFileSync(__dirname + "/../prototype/src/styles.less", "utf8")),
+	styles = _.template(fs.readFileSync(__dirname + "/../prototype/src/styles.scss", "utf8")),
 	pkg = _.template(fs.readFileSync(__dirname + "/../prototype/package.json", "utf8")),
 	readme = _.template(fs.readFileSync(__dirname + "/../prototype/README.md", "utf8"));
 
@@ -55,7 +55,7 @@ mkdirp(path, function() {
 	fs.writeFileSync(path + "/README.md", readme(data));
 
 	mkdirp(path + "/src", function() {
-		fs.writeFileSync(path + "/src/styles.less", styles(data));
+		fs.writeFileSync(path + "/src/styles.scss", styles(data));
 
 		ncp(__dirname + "/../prototype/src/base.html", path + "/src/base.html", function (err) {
 		 	if (err) {
