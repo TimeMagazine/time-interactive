@@ -13,7 +13,7 @@ const config = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         options: {
-          presets: [ [ 'es2015', { modules: false, loose: true  } ] ]
+          presets: [ [ 'env', { modules: false, loose: true  } ] ]
 
         }
       },

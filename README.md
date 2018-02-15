@@ -4,7 +4,7 @@ Guide to Time.com Interactives
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.4.9
+v0.4.9c
 
 Our interactives at Time are developed independently from the CMS and bundled into self-assembling Javascript files using [webpack](https://webpack.github.io/). They are both discrete--requiring no dependencies--and discreet--interfering as little as possible with the rest of the page. 
 
@@ -19,6 +19,7 @@ Of the various built-in npm commands, one, `npm run analyze`, shows you which pa
 	npm install -g webpack-bundle-size-analyzer
 
 ## Update log
++ **v0.4.9c**: Fixing Wepack configs and switching from LESS to SASS
 + **v0.4.9**: Using `babel-preset-env`
 + **v0.4.8**: Updated to latest Webpack modules
 + **v0.4.7**: Added font-weights 100 and 700
