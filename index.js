@@ -1,6 +1,6 @@
 (function() {
     // base CSS file
-    require("./src/interactive.less");
+    require("./src/interactive.scss");
 
     function onDocumentReady(fn) {
         // Check to see if the body is ready. If not, try again in 100ms.
