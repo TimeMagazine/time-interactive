@@ -4,12 +4,12 @@
   "description": "",
   "repository": {},
   "dependencies": {
-    "time-interactive": "0.5.0"
+    "time-interactive": "0.5.1"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack/dev.config.js",
-    "watch": "./node_modules/.bin/webpack-dev-server --config webpack/dev.config.js --watch",
-    "minify": "./node_modules/.bin/webpack --config webpack/production.config.js",
+    "build": "./node_modules/.bin/webpack --config webpack/development.config.js --mode development",
+    "minify": "./node_modules/.bin/webpack --config webpack/production.config.js --mode production",
+    "watch": "./node_modules/.bin/webpack-dev-server --config webpack/development.config.js --mode development --watch",
     "analyze": "./node_modules/.bin/webpack --config webpack/production.config.js --json | webpack-bundle-size-analyzer",
     "dryrun": "aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*' --dryrun",
     "upload": "aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*'",
@@ -23,26 +23,27 @@
   "devDependencies": {
     "autoprefixer": "^8.0.0",
     "babel-core": "6.26.0",
-    "babel-loader": "7.1.2",
+    "babel-loader": "7.1.4",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-transform-decorators-legacy": "1.3.4",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "css-loader": "0.28.9",
+    "css-loader": "0.28.11",
     "dsv-loader": "2.0.0",
-    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "fs-extra": "5.0.0",
     "less": "^3.0.0",
-    "less-loader": "4.0.5",
+    "less-loader": "4.1.0",
     "node-sass": "4.7.2",
     "postcss-loader": "^2.1.0",
-    "sass-loader": "6.0.6",
-    "style-loader": "0.20.1",
-    "underscore-template-loader": "0.8.0",
-    "url-loader": "^0.6.2",
-    "webpack": "3.11.0",
-    "webpack-dev-server": "2.11.1"
+    "sass-loader": "6.0.7",
+    "style-loader": "0.20.3",
+    "underscore-template-loader": "1.0.0",
+    "url-loader": "^1.0.1",
+    "webpack": "4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "3.1.1",
+    "webpack-merge": "^4.1.2"
   }
 }

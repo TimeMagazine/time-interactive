@@ -27,7 +27,7 @@ fs.copy( assetBase, contentBase, ( e ) => {
 
 
 const server = new WebpackDevServer( compiler, {
-  contentBase: '../dist/',
+  contentBase: '../',
   hot: true,
   historyApiFallback: false,
   compress: true,

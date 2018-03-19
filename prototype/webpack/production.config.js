@@ -1,72 +1,22 @@
-const webpack = require('webpack'); //to access built-in plugins
-const autoprefixer = require('autoprefixer')
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const base = require('./base.config');
 
-const config = {
-  entry: ['./debug.js'],
-  output: {
-    filename: './script-min.js'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        options: {
-          presets: [ [ 'env', { modules: false, loose: true  } ] ]
-
-        }
-      },
-      {
-          test: /\.json$/,
-          loaders: [ 'json-loader' ]
-      },
-      { 
-        test: /\.css$/,
-        loaders: [
-          'style-loader', 'css-loader',
-          {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
-       ]
-      },
-      { 
-          test: /\.less$/,
-          loaders: [
-            'style-loader', 'css-loader', 'less-loader',
-            {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
-        ]
-      },
-      {
-          test: /\.scss$/,
-          loaders: [
-            'style-loader', 'css-loader', 'sass-loader',
-            {loader: 'postcss-loader', options: { plugins: () => [autoprefixer] }}
-        ]
-      },
-      { 
-          test: /\.html$/,
-          loaders: [ 'underscore-template-loader' ] 
-      },
-      {
-          test: /\.(csv|tsv)$/,
-          loaders: [ 'dsv-loader' ]
-      },
-      {
-          test: /\.(png|jpeg|jpg|gif)$/,
-          loaders: [ 'url-loader?limit=10000' ]
-      }      
-    ]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      output: {
-        comments: false,
-      },
-      sourceMap: false,
-    })
- ]
-};
-
-module.exports = config;
+module.exports = merge(base, {
+	output: {
+		filename: "script-min.js"
+	},
+	plugins: [
+		new UglifyJsPlugin({
+			cache: true,
+			parallel: true,
+			uglifyOptions: {
+				compress: false,
+				ecma: 6,
+				mangle: true
+			},
+			sourceMap: true
+		})
+	]
+});

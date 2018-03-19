@@ -65,7 +65,13 @@ mkdirp(path, function() {
 	});
 
 	mkdirp(path + "/webpack", function() {
-		ncp(__dirname + "/../prototype/webpack/dev.config.js", path + "/webpack/dev.config.js", function (err) {
+		ncp(__dirname + "/../prototype/webpack/base.config.js", path + "/webpack/base.config.js", function (err) {
+		 	if (err) {
+		   		return console.error(err);
+		 	}
+		});
+
+		ncp(__dirname + "/../prototype/webpack/development.config.js", path + "/webpack/development.config.js", function (err) {
 		 	if (err) {
 		   		return console.error(err);
 		 	}
