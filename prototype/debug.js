@@ -2,7 +2,8 @@
 
 var time = require('time-interactive');
 
-require("./src/styles.scss"); // this goes outside the callback since otherwise the interactive sometimes fires before the CSS is fully loaded
+require("./src/time-interactive.scss");	// default styles for all interactives. Change if necessary.
+require("./src/styles.scss");			// project-specific styling
 
 time("<%= interactive_id %>", function(interactive) {
 	"use strict";

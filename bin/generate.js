@@ -56,6 +56,7 @@ mkdirp(path, function() {
 
 	mkdirp(path + "/src", function() {
 		fs.writeFileSync(path + "/src/styles.scss", styles(data));
+		fs.copyFileSync(__dirname + "/../prototype/src/time-interactive.scss", path + "/src/time-interactive.scss");
 
 		ncp(__dirname + "/../prototype/src/base.html", path + "/src/base.html", function (err) {
 		 	if (err) {

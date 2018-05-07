@@ -86,7 +86,7 @@
 
         // return the DOM object
         return {
-            version: "0.5.1",
+            version: "0.5.2",
             id: id,
             el: el,
             width: function() { return el.offsetWidth; },

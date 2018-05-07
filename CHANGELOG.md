@@ -1,5 +1,6 @@
 ## Update log for "time-interactive"
 
++ **v0.5.2**: Broke out `time-interactive.scss` into prototype
 + **v0.5.1**: Updated Webpack and moved common configs to `base.config.js`
 + **v0.5.0**: Sass and webpack-presets-env working
 + **v0.4.9c**: Fixing Wepack configs and switching from LESS to SASS
