@@ -2,7 +2,7 @@
 
 var fs = require("fs");
 var mkdirp = require("mkdirp");
-var _ = require("underscore");
+var ejs = require("ejs");
 var ncp = require('ncp').ncp;
 
 var args = require('minimist')(process.argv.slice(2));
@@ -21,6 +21,7 @@ if (!args._.length) {
 var app_dir = "./";  // default to the the current directory
 if (args._.length > 1) {
 	app_dir = args._[1];
+
     // make sure app_dir ends with a / delimiter
     if (app_dir.slice(-1) != '/') {
         app_dir += '/';
@@ -28,34 +29,35 @@ if (args._.length > 1) {
 }
 
 var data = {
-		interactive_id: args._[0],
-		version: opts.version || "*"
-	};
+	interactive_id: args._[0],
+	version: opts.version || "*"
+};
 
-
-var index = _.template(fs.readFileSync(__dirname + "/../prototype/index.html", "utf8")),
-	embed = _.template(fs.readFileSync(__dirname + "/../prototype/embed.html", "utf8")),
-	debug = _.template(fs.readFileSync(__dirname + "/../prototype/debug.js", "utf8")),
-	styles = _.template(fs.readFileSync(__dirname + "/../prototype/src/styles.scss", "utf8")),
-	pkg = _.template(fs.readFileSync(__dirname + "/../prototype/package.json", "utf8")),
-	readme = _.template(fs.readFileSync(__dirname + "/../prototype/README.md", "utf8"));
+var templates = {
+	index: fs.readFileSync(__dirname + "/../prototype/index.html", "utf8"),
+	embed: fs.readFileSync(__dirname + "/../prototype/embed.html", "utf8"),
+	debug: fs.readFileSync(__dirname + "/../prototype/debug.js", "utf8"),
+	styles: fs.readFileSync(__dirname + "/../prototype/src/styles.scss", "utf8"),
+	pkg: fs.readFileSync(__dirname + "/../prototype/package.json", "utf8"),
+	readme: fs.readFileSync(__dirname + "/../prototype/README.md", "utf8")
+};
 
 var path = app_dir + data.interactive_id;
 
 if (fs.existsSync(path)) {
-    console.error("The path "+path+ " already exists!");
+    console.error("The path " + path + " already exists!");
     console.error("Program execution aborted!");
 }
 
 mkdirp(path, function() {
-	fs.writeFileSync(path + "/index.html", index(data));
-	fs.writeFileSync(path + "/embed.html", embed(data));
-	fs.writeFileSync(path + "/debug.js", debug(data));
-	fs.writeFileSync(path + "/package.json", pkg(data));
-	fs.writeFileSync(path + "/README.md", readme(data));
+	fs.writeFileSync(path + "/index.html", ejs.render(templates.index, data));
+	fs.writeFileSync(path + "/embed.html", ejs.render(templates.embed, data));
+	fs.writeFileSync(path + "/debug.js", ejs.render(templates.debug, data));
+	fs.writeFileSync(path + "/package.json", ejs.render(templates.pkg, data));
+	fs.writeFileSync(path + "/README.md", ejs.render(templates.readme, data));
 
 	mkdirp(path + "/src", function() {
-		fs.writeFileSync(path + "/src/styles.scss", styles(data));
+		fs.writeFileSync(path + "/src/styles.scss", ejs.render(templates.styles, data));
 		fs.copyFileSync(__dirname + "/../prototype/src/time-interactive.scss", path + "/src/time-interactive.scss");
 
 		ncp(__dirname + "/../prototype/src/base.html", path + "/src/base.html", function (err) {
@@ -65,6 +67,7 @@ mkdirp(path, function() {
 		});
 	});
 
+	// copy over webpack files
 	mkdirp(path + "/webpack", function() {
 		ncp(__dirname + "/../prototype/webpack/base.config.js", path + "/webpack/base.config.js", function (err) {
 		 	if (err) {
@@ -85,23 +88,13 @@ mkdirp(path, function() {
 		});
 	});
 
-	mkdirp(path + "/data", function() {
+	mkdirp(path + "/data", function() {});
 
-	});
-
-	mkdirp(path + "/code", function() {
-
-	});
+	mkdirp(path + "/code", function() {});
 
 	ncp(__dirname + "/../prototype/gitignore", path + "/.gitignore", function (err) {
-	 if (err) {
-	   return console.error(err);
-	 }
-	});
-
-	ncp(__dirname + "/../prototype/screenshot.png", path + "/screenshot.png", function (err) {
-	 if (err) {
-	   return console.error(err);
-	 }
+		if (err) {
+			return console.error(err);
+		}
 	});
 });

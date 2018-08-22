@@ -38,9 +38,9 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.html$/,
-				loaders: ['underscore-template-loader']
-			},
+				test: /\.(html|ejs)$/, 
+				loaders: [ 'ejs-loader' ]
+			},			
 			{
 				test: /\.(csv|tsv)$/,
 				loaders: ['dsv-loader']

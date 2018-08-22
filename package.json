@@ -1,6 +1,6 @@
 {
   "name": "time-interactive",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Interactive bootstrap files for Time.com",
   "main": "index.js",
   "repository": {
@@ -11,10 +11,10 @@
     "time-interactive": "./bin/generate.js"
   },
   "dependencies": {
+    "ejs": "^2.6.1",
     "minimist": "^1.2.0",
     "mkdirp": ">=0.5.1",
-    "ncp": ">=2.0.0",
-    "underscore": "^1.9.0"
+    "ncp": ">=2.0.0"
   },
   "author": {
     "name": "Chris Wilson",
