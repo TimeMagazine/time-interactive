@@ -12,6 +12,8 @@ pids
 logs
 results
 
+prototype/lib
+
 npm-debug.log
 node_modules
 script.js

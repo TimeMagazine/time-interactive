@@ -13,7 +13,7 @@ module.exports = {
 				exclude: /(node_modules|bower_components)/,
 				loader: 'babel-loader',
 				options: {
-					presets: [ [ 'env', { modules: false, loose: true	} ] ]
+					presets: [ [ '@babel/preset-env', { modules: false, loose: true	} ] ]
 				}
 			},
 			{
