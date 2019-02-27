@@ -2,20 +2,21 @@
 lib-cov
 *.seed
 *.log
-*.csv
 *.dat
 *.out
 *.pid
 *.gz
 
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
 pids
 logs
 results
 
-prototype/lib
-
 npm-debug.log
 node_modules
 script.js
-
-package-lock.json
+script-min.js

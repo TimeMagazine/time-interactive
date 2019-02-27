@@ -1,10 +1,10 @@
 {
-  "name": "<%= interactive_id %>",
+  "name": "my_test_app",
   "version": "0.0.0",
   "description": "",
   "repository": {},
   "dependencies": {
-    "time-interactive": "0.5.8"
+    "time-interactive": "0.5.6"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack/development.config.js --mode development",
