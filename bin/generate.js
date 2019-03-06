@@ -69,19 +69,19 @@ mkdirp(path, function() {
 
 	// copy over webpack files
 	mkdirp(path + "/webpack", function() {
-		ncp(__dirname + "/../prototype/webpack/base.config.js", path + "/webpack/base.config.js", function (err) {
+		ncp(__dirname + "/../prototype/webpack/webpack.common.js", path + "/webpack/webpack.common.js", function (err) {
 		 	if (err) {
 		   		return console.error(err);
 		 	}
 		});
 
-		ncp(__dirname + "/../prototype/webpack/development.config.js", path + "/webpack/development.config.js", function (err) {
+		ncp(__dirname + "/../prototype/webpack/webpack.dev.js", path + "/webpack/webpack.dev.js", function (err) {
 		 	if (err) {
 		   		return console.error(err);
 		 	}
 		});
 
-		ncp(__dirname + "/../prototype/webpack/production.config.js", path + "/webpack/production.config.js", function (err) {
+		ncp(__dirname + "/../prototype/webpack/webpack.prod.js", path + "/webpack/webpack.prod.js", function (err) {
 		 	if (err) {
 		   		return console.error(err);
 		 	}

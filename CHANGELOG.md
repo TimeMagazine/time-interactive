@@ -1,5 +1,6 @@
 ## Update log for "time-interactive"
 
++ **v0.6.9**: Fixed gen file
 + **v0.5.9**: Updated webpack
 + **v0.5.4**: Updated dependencies
 + **v0.5.3**: Updated dependencies
