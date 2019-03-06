@@ -4,13 +4,13 @@
   "description": "",
   "repository": {},
   "dependencies": {
-    "time-interactive": "0.5.8"
+    "time-interactive": "0.5.9"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack/development.config.js --mode development",
-    "minify": "./node_modules/.bin/webpack --config webpack/production.config.js --mode production",
-    "watch": "./node_modules/.bin/webpack-dev-server --config webpack/development.config.js --mode development --watch",
-    "analyze": "./node_modules/.bin/webpack --config webpack/production.config.js --json | webpack-bundle-size-analyzer",
+    "build": "./node_modules/.bin/webpack --config webpack/webpack.dev.js --mode development",
+    "minify": "./node_modules/.bin/webpack --config webpack/webpack.prod.js --mode production",
+    "watch": "./node_modules/.bin/webpack-dev-server --config webpack/webpack.dev.js --mode development --watch",
+    "analyze": "./node_modules/.bin/webpack --config webpack/webpack.prod.js --json | webpack-bundle-size-analyzer",
     "dryrun": "aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*' --dryrun",
     "upload": "aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*'",
     "minimal": "npm run build && npm run minify && aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*' --include='script.js --include='script-min.js' --include='index.html'",
@@ -39,7 +39,6 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
-    "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "webpack": "4.29.5",
     "webpack-cli": "^3.2.1",

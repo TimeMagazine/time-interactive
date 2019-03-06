@@ -1,5 +1,6 @@
 ## Update log for "time-interactive"
 
++ **v0.5.9**: Updated webpack
 + **v0.5.4**: Updated dependencies
 + **v0.5.3**: Updated dependencies
 + **v0.5.2**: Broke out `time-interactive.scss` into prototype

@@ -1,10 +1,10 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
-const base = require('./base.config');
+const common = require('./webpack.common');
 
-module.exports = merge(base, {
+module.exports = merge(common, {
 	output: {
 		filename: "script.js"
 	},
+	mode: 'development',
 	devtool: 'inline-source-map'
 });
