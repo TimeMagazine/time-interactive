@@ -1,10 +1,14 @@
 {
   "name": "<%= interactive_id %>",
   "version": "0.0.0",
-  "description": "",
-  "repository": {},
+  "description": "Time interactive prototype",
+  "main": "debug.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TimeMagazine/time-interactive.git"
+  },
   "dependencies": {
-    "time-interactive": "0.6.0"
+    "time-interactive": "0.6.1"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack/webpack.dev.js --mode development",
@@ -17,32 +21,33 @@
     "stage": "npm run build && npm run minify && aws s3 sync . s3://time-static-shared/interactives/staging/$npm_package_name/ --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store/*'",
     "deploy": "npm run build && npm run minify && npm run upload",
     "url": "echo http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/$npm_package_name/",
-    "staging_url": "echo http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/staging/$npm_package_name/"
+    "staging_url": "echo http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/staging/$npm_package_name/",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "autoprefixer": "^9.4.7",
-    "babel-loader": "^8.0.5",
-    "babel-plugin-add-module-exports": "1.0.0",
-    "babel-plugin-transform-decorators-legacy": "1.3.5",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "autoprefixer": "^9.6.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-transform-runtime": "6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "css-loader": "2.1.0",
+    "css-loader": "^3.0.0",
     "dsv-loader": "2.0.0",
-    "ejs-loader": "^0.3.1",
-    "file-loader": "^3.0.1",
-    "fs-extra": "7.0.1",
-    "less": "^3.9.0",
-    "less-loader": "4.1.0",
-    "node-sass": "4.11.0",
+    "ejs-loader": "^0.3.3",
+    "file-loader": "^4.0.0",
+    "less-loader": "^5.0.0",
+    "node-sass": "4.12.0",
     "postcss-loader": "^3.0.0",
+    "raw-loader": "^3.0.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "4.29.5",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "3.2.1",
+    "webpack": "4.35.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "3.7.2",
     "webpack-merge": "^4.2.1"
-  }
+  },
+  "peerDependencies": {
+    "less": "^3.9.0"
+  },
+  "author": "Chris Wilson",
+  "license": "MIT"
 }

@@ -15,10 +15,11 @@ time("<%= interactive_id %>", function(interactive) {
 	}
 
 	// const PREFIX = "http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/<%= interactive_id %>/";
+	// const PREFIX = "//assets.time.com/interactives/<%= interactive_id %>/";
 	const PREFIX = "./";
 
 	//MARKUP
 	interactive.el.innerHTML = require("./src/base.html")();
-	// let el = select(interactive.el);
+	// let el = select(interactive.el); // useful if you've included d3 select
 
 }, true); // change this last param to true if you want to skip the DOM checks
