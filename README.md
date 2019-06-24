@@ -4,7 +4,7 @@ Guide to Time.com Interactives
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.6.1
+v0.6.2
 
 Our interactives at Time are developed independently from the CMS and bundled into self-assembling Javascript files using [webpack](https://webpack.github.io/). They are both discrete--requiring no dependencies--and discreet--interfering as little as possible with the rest of the page. 
 
@@ -20,7 +20,7 @@ You can compile your interactive with either `npm run build` (development), whic
 
 ### Webpack
 
-As of v0.6.1, we're using the phenomenal Webpack 4.0, which requires minimal configuration. By default, Webpack supports [ES2015](https://kangax.github.io/compat-table/es5/). To fully support ES6 in development, we use [babel](https://babeljs.io/) to compile the JavaScript.
+As of v0.6.2, we're using the phenomenal Webpack 4.0, which requires minimal configuration. By default, Webpack supports [ES2015](https://kangax.github.io/compat-table/es5/). To fully support ES6 in development, we use [babel](https://babeljs.io/) to compile the JavaScript.
 
 In cases were an old, "broken" module requires globals--here's looking at you, jQuery--the configuration file may need to be [shimmed](https://webpack.js.org/guides/shimming/) to execute correctly. This also may be required if [using underscore templates](https://github.com/difelice/ejs-loader#usage).
 

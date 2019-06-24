@@ -8,7 +8,7 @@
     "url": "https://github.com/TimeMagazine/time-interactive.git"
   },
   "dependencies": {
-    "time-interactive": "0.6.1"
+    "time-interactive": "0.6.2"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack/webpack.dev.js --mode development",
