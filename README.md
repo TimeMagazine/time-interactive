@@ -6,6 +6,8 @@ Guide to Time.com Interactives
 
 v0.6.2
 
+**This is currently breaking as I upgrade Webpack. v6.0 is last stable**
+
 Our interactives at Time are developed independently from the CMS and bundled into self-assembling Javascript files using [webpack](https://webpack.github.io/). They are both discrete--requiring no dependencies--and discreet--interfering as little as possible with the rest of the page. 
 
 You can also see the [wiki](https://github.com/TimeMagazine/time-interactive/wiki) for instructions on installation and usage. 
