@@ -55,6 +55,7 @@ mkdirp(path, function() {
 	fs.writeFileSync(path + "/debug.js", ejs.render(templates.debug, data));
 	fs.writeFileSync(path + "/package.json", ejs.render(templates.pkg, data));
 	fs.writeFileSync(path + "/README.md", ejs.render(templates.readme, data));
+	fs.copyFileSync(__dirname + "/../prototype/screenshot.png", path + "/screenshot.png");
 
 	mkdirp(path + "/src", function() {
 		fs.writeFileSync(path + "/src/styles.scss", ejs.render(templates.styles, data));
@@ -89,8 +90,9 @@ mkdirp(path, function() {
 	});
 
 	mkdirp(path + "/data", function() {});
-
 	mkdirp(path + "/code", function() {});
+	mkdirp(path + "/docs", function() {});
+	mkdirp(path + "/img", function() {});
 
 	ncp(__dirname + "/../prototype/gitignore", path + "/.gitignore", function (err) {
 		if (err) {

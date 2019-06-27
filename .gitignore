@@ -13,7 +13,7 @@ logs
 results
 
 prototype/lib
-test/my_test_app
+test/*
 
 npm-debug.log
 node_modules

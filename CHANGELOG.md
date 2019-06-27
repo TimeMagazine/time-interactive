@@ -1,6 +1,8 @@
 ## Update log for "time-interactive"
 
-+ **v0.6.9**: Fixed gen file
++ **v0.6.4**: Added empty `docs` and `img` directories and restored blank screenshot.
++ **v0.6.3**: Updated webpack and babel
++ **v0.6.0**: Fixed gen file
 + **v0.5.9**: Updated webpack
 + **v0.5.4**: Updated dependencies
 + **v0.5.3**: Updated dependencies
