@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-// const nodeExternals = require('webpack-node-externals');
-// const autoprefixer = require('autoprefixer')
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
 	entry: "./debug.js",
@@ -18,7 +16,7 @@ module.exports = {
 					loader: 'babel-loader',
 					options: {
 						presets: [ '@babel/preset-env' ],
-						plugins: ['@babel/plugin-transform-runtime']
+						plugins: [ '@babel/plugin-transform-runtime' ]
 					}
 				}
 			},
@@ -28,23 +26,65 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader', 'postcss-loader'],
-				options: {
-					url: true
-				}
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							url: true,
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							ident: 'postcss',
+							plugins: () => [ postcssPresetEnv() ]
+						}
+					}
+				]
 			},
 			{
 				test: /\.less$/,
-				use: ['style-loader', 'css-loader', 'less-loader', 'postcss-loader']
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							url: true,
+							importLoaders: 1
+						}
+					},
+					'less-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							ident: 'postcss',
+							plugins: () => [ postcssPresetEnv() ]
+						}
+					}
+				]
 			},	
 			{
 				test: /\.scss$/,
-				use: {
-					loader: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
-					options: {
-						includePaths: ['./node_modules/node-sass']
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							url: true,
+							importLoaders: 1
+						}
+					},
+					'sass-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							ident: 'postcss',
+							plugins: () => [ postcssPresetEnv() ]
+						}
 					}
-				}				
+				]
 			},
 			{
 				test: /\.(html|ejs)$/, 
@@ -56,15 +96,16 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpe?g|gif)$/,
-				use: 'file-loader',
-				options: {
-			  		outputPath: 'img'
+				use: {
+					loader: 'file-loader',
+					options: {
+				  		outputPath: 'img'
+					}
 				}
 			}
 		]
 	},
 	plugins: [
-		new webpack.ProgressPlugin(),
-		require('autoprefixer')
+		new webpack.ProgressPlugin()
 	]	
 };

@@ -3,12 +3,12 @@
 	/* default styles for TIME interactives */
 	@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:100,400,500,700');
 	width: 100%;
+	max-width: 800px;
 	font-family: 'Libre Franklin', Arial, sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 
 	svg { overflow: hidden; }
-
 
 	/* Undoing junk from time.css. Please submit PRs for anything missing here. */
 	table {
@@ -43,12 +43,14 @@
 	button {
 		cursor: pointer;
 		outline: none;
+		background-color: white;
+		font-size: 1em;
 	}
 
 	input {
 		padding: 3px 10px 4px 10px;
 		outline: none;
-		border: 2px solid $blue;
+		border: 2px solid black;
 		border-radius: 5px;
 		font-size: 24px;
 		line-height: 24px;
