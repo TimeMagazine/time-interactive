@@ -1,11 +1,11 @@
 {
   "name": "time-interactive",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Interactive bootstrap files for Time.com",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TimeMagazine/time-interactive.git"
+    "url": "https://github.com/TimeMagazineLabs/time-interactive.git"
   },
   "bin": {
     "time-interactive": "./bin/generate.js"

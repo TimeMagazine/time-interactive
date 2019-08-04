@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const postcssPresetEnv = require('postcss-preset-env');
+const postcssPresetEnv = ;
+const cssnano = require('cssnano');
 
 module.exports = {
 	entry: "./debug.js",
@@ -45,6 +46,27 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.scss$/,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							url: true,
+							importLoaders: 1
+						}
+					},
+					'sass-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							ident: 'postcss',
+							plugins: () => [ postcssPresetEnv(), cssnano ]
+						}
+					}
+				]
+			},
+			{
 				test: /\.less$/,
 				use: [
 					'style-loader',
@@ -65,27 +87,6 @@ module.exports = {
 					}
 				]
 			},	
-			{
-				test: /\.scss$/,
-				use: [
-					'style-loader',
-					{
-						loader: 'css-loader',
-						options: {
-							url: true,
-							importLoaders: 1
-						}
-					},
-					'sass-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							ident: 'postcss',
-							plugins: () => [ postcssPresetEnv() ]
-						}
-					}
-				]
-			},
 			{
 				test: /\.(html|ejs)$/, 
 				use: 'ejs-loader'

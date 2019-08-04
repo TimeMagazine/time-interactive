@@ -15,6 +15,7 @@ results
 prototype/lib
 test/*
 
+pnpm-lock.yaml
 npm-debug.log
 node_modules
 script.js
