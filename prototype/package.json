@@ -8,13 +8,13 @@
     "url": "https://github.com/TimeMagazine/time-interactive.git"
   },
   "dependencies": {
-    "time-interactive": "0.6.5"
+    "time-interactive": "0.7.0a"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack/webpack.dev.js --mode development",
-    "minify": "./node_modules/.bin/webpack --config webpack/webpack.prod.js --mode production",
-    "watch": "./node_modules/.bin/webpack-dev-server --config webpack/webpack.dev.js --mode development --watch",
-    "analyze": "./node_modules/.bin/webpack --config webpack/webpack.prod.js --json | webpack-bundle-size-analyzer",
+    "build": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=.",
+    "build_verbose": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --verbose",
+    "minify": "bundle-module --entry=./debug.js --name=script-min --env=node --output_dir=. --min",
+    "watch": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --watch",
     "dryrun": "aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*docs/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*' --dryrun",
     "upload": "aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*docs/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*'",
     "minimal": "npm run build && npm run minify && aws s3 sync . s3://time-static-shared/interactives/$npm_package_name/ --exclude '*' --include='script.js --include='script-min.js' --include='index.html'",
@@ -23,31 +23,6 @@
     "url": "echo http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/$npm_package_name/",
     "staging_url": "echo http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/staging/$npm_package_name/",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-transform-runtime": "7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/runtime": "^7.5.5",
-    "autoprefixer": "^9.6.1",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.1.0",
-    "cssnano": "^4.1.10",
-    "dsv-loader": "2.0.0",
-    "ejs-loader": "^0.3.3",
-    "file-loader": "^4.1.0",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
-    "node-sass": "4.12.0",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "raw-loader": "^3.1.0",
-    "sass-loader": "7.1.0",
-    "style-loader": "0.23.1",
-    "webpack": "4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "3.7.2",
-    "webpack-merge": "^4.2.1"
   },
   "author": "Chris Wilson",
   "license": "MIT"

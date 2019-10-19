@@ -57,32 +57,19 @@ mkdirp(path, function() {
 	fs.writeFileSync(path + "/README.md", ejs.render(templates.readme, data));
 	fs.copyFileSync(__dirname + "/../prototype/screenshot.png", path + "/screenshot.png");
 
+	if (args.test) {
+		let package = fs.readFileSync(path + "/package.json", "utf8");
+		package = package.replace(/"time-interactive": ".*?"/,  `"time-interactive": "../.."`);
+		console.log(__dirname);
+		fs.writeFileSync(path + "/package.json", package);
+	}
+
+
 	mkdirp(path + "/src", function() {
 		fs.writeFileSync(path + "/src/styles.scss", ejs.render(templates.styles, data));
 		fs.copyFileSync(__dirname + "/../prototype/src/time-interactive.scss", path + "/src/time-interactive.scss");
 
 		ncp(__dirname + "/../prototype/src/base.html", path + "/src/base.html", function (err) {
-		 	if (err) {
-		   		return console.error(err);
-		 	}
-		});
-	});
-
-	// copy over webpack files
-	mkdirp(path + "/webpack", function() {
-		ncp(__dirname + "/../prototype/webpack/webpack.config.js", path + "/webpack/webpack.config.js", function (err) {
-		 	if (err) {
-		   		return console.error(err);
-		 	}
-		});
-
-		ncp(__dirname + "/../prototype/webpack/webpack.dev.js", path + "/webpack/webpack.dev.js", function (err) {
-		 	if (err) {
-		   		return console.error(err);
-		 	}
-		});
-
-		ncp(__dirname + "/../prototype/webpack/webpack.prod.js", path + "/webpack/webpack.prod.js", function (err) {
 		 	if (err) {
 		   		return console.error(err);
 		 	}

@@ -1,6 +1,6 @@
 {
   "name": "time-interactive",
-  "version": "0.6.5",
+  "version": "0.7.0a",
   "description": "Interactive bootstrap files for Time.com",
   "main": "index.js",
   "repository": {
@@ -11,7 +11,7 @@
     "time-interactive": "./bin/generate.js"
   },
   "dependencies": {
-    "ejs": "^2.6.2",
+    "ejs": "^2.7.1",
     "minimist": "^1.2.0",
     "mkdirp": ">=0.5.1",
     "ncp": ">=2.0.0"
@@ -22,7 +22,7 @@
     "url": "http://mechanicalscribe.com"
   },
   "scripts": {
-    "test": "rm -rf test/my_test_app && cd test && ../bin/generate.js my_test_app && cd my_test_app && npm install && npm run build && npm run minify && cd ../.."
+    "test": "rm -rf test/my_test_app && cd test && ../bin/generate.js my_test_app --test && cd my_test_app && npm install && npm run build && npm run minify && cd ../.."
   },
   "license": "MIT"
 }

@@ -53,7 +53,7 @@
 
         // return the DOM object
         return {
-            version: "0.6.4",
+            version: "0.7a",
             id: id,
             el: el,
             width: function () {

@@ -1,5 +1,6 @@
 ## Update log for "time-interactive"
 
++**v0.7a**: *MAJOR*: Removed Webpack, usinging [bundle-module](https://github.com/wilson428/bundle-module) instead
 + **v0.6.5**: Fixing the damn `lodash` vulnerability.
 + **v0.6.4**: Added empty `docs` and `img` directories and restored blank screenshot.
 + **v0.6.3**: Updated webpack and babel
