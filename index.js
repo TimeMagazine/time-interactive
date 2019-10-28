@@ -19,6 +19,11 @@
         return window.hasOwnProperty('ontouchstart') || navigator.maxTouchPoints; // works on IE10/11 and Surface
     }
 
+    // https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device
+    function is_phone() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
     // this assumes there is already a <div> on the page with the correct id, which Wordpress should have created (see README)
     function bootstrap_interactive(id) {
         let el = document.getElementById(id);
@@ -53,7 +58,7 @@
 
         // return the DOM object
         return {
-            version: "0.7a",
+            version: "0.7b",
             id: id,
             el: el,
             width: function () {
