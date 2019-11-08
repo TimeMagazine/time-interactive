@@ -4,7 +4,7 @@ The TIME.com Interactive Bootstrapper
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.7.1
+v0.7.2
 
 # Introduction
 
@@ -14,9 +14,17 @@ You can also see the [wiki](https://github.com/TimeMagazine/time-interactive/wik
 
 ## Getting started
 
-	npm install time-interactive
+	npm install -g time-interactive
 
 This repository provides both a [command-line script](https://github.com/TimeMagazine/time-interactive/blob/master/bin/generate.js) for generating new projects and a [client-side script](https://github.com/TimeMagazine/time-interactive/blob/master/index.js) with a few convenience functions.
+
+## Generating a project
+
+When globally installed, the module with bootstrap a project with the id you provide.
+
+	time-interactive [project_id]
+
+If the script detects an existing `time-interactive` project by that name with an older version, it will ask you if you want to update.
 
 ## Compiling
 
