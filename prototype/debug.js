@@ -14,9 +14,8 @@ time("<%= interactive_id %>", function(interactive) {
 		return;
 	}
 
-	const PREFIX = "./";
-	// const PREFIX = "http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/<%= interactive_id %>/";
-	// const PREFIX = "//assets.time.com/interactives/<%= interactive_id %>/";
+	const ASSETS = "./";
+	<% if (config.asset_pipelines) { config.asset_pipelines.forEach(asset_pipeline => { %>//const PREFIX = "<%= asset_pipeline %>";<% }); } %>
 
 	//MARKUP
 	interactive.el.innerHTML = require("./src/base.html")();

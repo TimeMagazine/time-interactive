@@ -11,6 +11,7 @@ const chalk = require('chalk');
 
 const args = require('minimist')(process.argv.slice(2));
 const settings = JSON.parse(fs.readFileSync(__dirname + "/../package.json", "utf8"));
+const config = JSON.parse(fs.readFileSync(__dirname + "/../config.json", "utf8"));
 
 if (args.v || args.version) {
 	console.log("v" + settings.version);
@@ -45,7 +46,8 @@ if (args._.length > 1) {
 // to be fed to templates
 const data = {
 	interactive_id: args._[0],
-	version: settings.version || "*"
+	version: settings.version || "*",
+	config: config
 };
 
 const PROJECT_DIR = path.resolve(app_dir, data.interactive_id);
@@ -56,8 +58,6 @@ let package_old = null;
 async function checkIfUpdating() {
 	if (fs.existsSync(PROJECT_DIR)) {
 		let version_old = null;
-
-		console.log(path.resolve(PROJECT_DIR, "package.json"));
 
 		if (fs.existsSync(path.resolve(PROJECT_DIR, "package.json"))) {
 			package_old = JSON.parse(fs.readFileSync(path.resolve(PROJECT_DIR, "package.json"), "utf8"));
@@ -100,10 +100,34 @@ checkIfUpdating().then(() => {
 
 function generateNewProject() {
 	mkdirp(PROJECT_DIR, function() {
+		let package = JSON.parse(ejs.render(templates.pkg, data));
+
+
+		// add any organization-specific scripts
+		Object.keys(config.package).forEach(property => {
+			console.log("Adding property", property);
+			if (!package.hasOwnProperty(property)) {
+				package[property] = config.package[property];
+				return;
+			}
+			if (typeof package[property] == "object") {
+				console.log("Assigning", property);
+				console.log(package[property], config[property]);
+				let joined = Object.assign(package[property], config.package[property]);
+				console.log(joined);
+			} else {
+				package[property] = config.package[property];
+			}
+		});
+
+		// re-render
+		package = ejs.render(JSON.stringify(package, null, 2), data);
+
+
 		fs.writeFileSync(PROJECT_DIR + "/index.html", ejs.render(templates.index, data));
 		fs.writeFileSync(PROJECT_DIR + "/embed.html", ejs.render(templates.embed, data));
 		fs.writeFileSync(PROJECT_DIR + "/debug.js", ejs.render(templates.debug, data));
-		fs.writeFileSync(PROJECT_DIR + "/package.json", ejs.render(templates.pkg, data));
+		fs.writeFileSync(PROJECT_DIR + "/package.json", package);
 		fs.writeFileSync(PROJECT_DIR + "/README.md", ejs.render(templates.readme, data));
 		fs.copyFileSync(__dirname + "/../prototype/screenshot.png", PROJECT_DIR + "/screenshot.png");
 

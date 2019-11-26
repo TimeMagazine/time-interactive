@@ -8,21 +8,14 @@
     "url": "https://github.com/TimeMagazine/time-interactive.git"
   },
   "dependencies": {
-    "time-interactive": "0.7.2"
+    "time-interactive": "0.7.3"
   },
   "scripts": {
     "build": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=.",
     "build_verbose": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --verbose",
     "minify": "bundle-module --entry=./debug.js --name=script-min --env=node --output_dir=. --min",
     "watch": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --watch",
-    "dryrun": "aws s3 sync . s3://tusallc-prod-time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*docs/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*' --dryrun",
-    "upload": "aws s3 sync . s3://tusallc-prod-time-static-shared/interactives/$npm_package_name/ --exclude '*code/*' --exclude '*docs/*' --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store*'",
-    "minimal": "npm run build && npm run minify && aws s3 sync . s3://tusallc-prod-time-static-shared/interactives/$npm_package_name/ --exclude '*' --include='script.js --include='script-min.js' --include='index.html'",
-    "stage": "npm run build && npm run minify && aws s3 sync . s3://tusallc-prod-time-static-shared/interactives/staging/$npm_package_name/ --exclude '*node_modules/*' --exclude='*git/*' --exclude='*DS_Store/*'",
-    "deploy": "npm run build && npm run minify && npm run upload",
-    "url": "echo http://tusallc-prod-time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/$npm_package_name/",
-    "staging_url": "echo http://tusallc-prod-time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/staging/$npm_package_name/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"test": "npm test"
   },
   "author": "Chris Wilson",
   "license": "MIT"
