@@ -99,9 +99,8 @@ checkIfUpdating().then(() => {
 
 
 function generateNewProject() {
-	mkdirp(PROJECT_DIR, function() {
+	mkdirp(PROJECT_DIR).then(function() {
 		let package = JSON.parse(ejs.render(templates.pkg, data));
-
 
 		// add any organization-specific scripts
 		Object.keys(config.package).forEach(property => {
@@ -138,7 +137,7 @@ function generateNewProject() {
 		}
 
 
-		mkdirp(PROJECT_DIR + "/src", function() {
+		mkdirp(PROJECT_DIR + "/src").then(function() {
 			fs.writeFileSync(PROJECT_DIR + "/src/styles.scss", ejs.render(templates.styles, data));
 			fs.copyFileSync(__dirname + "/../prototype/src/time-interactive.scss", PROJECT_DIR + "/src/time-interactive.scss");
 
@@ -149,10 +148,10 @@ function generateNewProject() {
 			});
 		});
 
-		mkdirp(PROJECT_DIR + "/data", function() {});
-		mkdirp(PROJECT_DIR + "/code", function() {});
-		mkdirp(PROJECT_DIR + "/docs", function() {});
-		mkdirp(PROJECT_DIR + "/img", function() {});
+		mkdirp(PROJECT_DIR + "/data").then(function() {});
+		mkdirp(PROJECT_DIR + "/code").then(function() {});
+		mkdirp(PROJECT_DIR + "/docs").then(function() {});
+		mkdirp(PROJECT_DIR + "/img").then(function() {});
 
 		ncp(__dirname + "/../prototype/gitignore", PROJECT_DIR + "/.gitignore", function (err) {
 			if (err) {
