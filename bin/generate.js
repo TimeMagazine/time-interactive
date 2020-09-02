@@ -37,15 +37,22 @@ const app_dir = "./";  // default to the the current directory
 if (args._.length > 1) {
 	app_dir = args._[1];
 
-	// // make sure app_dir ends with a / delimiter
-	// if (app_dir.slice(-1) != '/') {
-	// 	app_dir += '/';
-	// }
+	// make sure app_dir ends with a / delimiter
+	if (app_dir.slice(-1) != '/') {
+		app_dir += '/';
+	}
+}
+
+// make sure interactive_id DOESN'T end with a / delimiter
+let interactive_id = args._[0];
+
+if (interactive_id.slice(-1) === '/') {
+	interactive_id = interactive_id.slice(0,-1);
 }
 
 // to be fed to templates
 const data = {
-	interactive_id: args._[0],
+	interactive_id: interactive_id,
 	version: settings.version || "*",
 	config: config
 };
@@ -97,7 +104,6 @@ checkIfUpdating().then(() => {
 	}
 });
 
-
 function generateNewProject() {
 	mkdirp(PROJECT_DIR).then(function() {
 		let package = JSON.parse(ejs.render(templates.pkg, data));
@@ -122,7 +128,6 @@ function generateNewProject() {
 		// re-render
 		package = ejs.render(JSON.stringify(package, null, 2), data);
 
-
 		fs.writeFileSync(PROJECT_DIR + "/index.html", ejs.render(templates.index, data));
 		fs.writeFileSync(PROJECT_DIR + "/embed.html", ejs.render(templates.embed, data));
 		fs.writeFileSync(PROJECT_DIR + "/debug.js", ejs.render(templates.debug, data));
@@ -135,7 +140,6 @@ function generateNewProject() {
 			package = package.replace(/"time-interactive": ".*?"/,  `"time-interactive": "../.."`);
 			fs.writeFileSync(PROJECT_DIR + "/package.json", package);
 		}
-
 
 		mkdirp(PROJECT_DIR + "/src").then(function() {
 			fs.writeFileSync(PROJECT_DIR + "/src/styles.scss", ejs.render(templates.styles, data));
@@ -168,7 +172,6 @@ function updateOldProject() {
 
 	let package_new = JSON.parse(ejs.render(templates.pkg, data));
 
-
 	// we're going to delicately update the old package here, touching as little as possible;
 
 	// don't touch any other prod dependencies
@@ -191,6 +194,8 @@ function updateOldProject() {
 	package_old.main = "debug.js";
 
 	// we'll overwrite these .html files since they're rarely edited and since very old ones have font calls no longer used
+
+	console.log(data);
 
 	fs.writeFileSync(PROJECT_DIR + "/index.html", ejs.render(templates.index, data));
 	fs.writeFileSync(PROJECT_DIR + "/embed.html", ejs.render(templates.embed, data));

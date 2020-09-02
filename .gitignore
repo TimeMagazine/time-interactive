@@ -1,4 +1,5 @@
 .DS_Store
+
 lib-cov
 *.seed
 *.log
@@ -19,5 +20,7 @@ pnpm-lock.yaml
 npm-debug.log
 node_modules
 script.js
+script-min.js
 
+pnpm-lock.yaml
 package-lock.json
