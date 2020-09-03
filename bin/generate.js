@@ -110,16 +110,16 @@ function generateNewProject() {
 
 		// add any organization-specific scripts
 		Object.keys(config.package).forEach(property => {
-			console.log("Adding property", property);
+			// console.log("Adding property", property);
 			if (!package.hasOwnProperty(property)) {
 				package[property] = config.package[property];
 				return;
 			}
 			if (typeof package[property] == "object") {
-				console.log("Assigning", property);
-				console.log(package[property], config[property]);
+				// console.log("Assigning", property);
+				// console.log(package[property], config.package[property]);
 				let joined = Object.assign(package[property], config.package[property]);
-				console.log(joined);
+				// console.log(joined);
 			} else {
 				package[property] = config.package[property];
 			}

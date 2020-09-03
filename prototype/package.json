@@ -8,7 +8,8 @@
     "url": "https://github.com/TimeMagazine/time-interactive.git"
   },
   "dependencies": {
-    "time-interactive": "0.7.3"
+    "time-interactive": "0.7.4",
+    "d3-selection": "^2.0.0"    
   },
   "scripts": {
     "build": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=.",
