@@ -8,15 +8,15 @@
     "url": "https://github.com/TimeMagazine/time-interactive.git"
   },
   "dependencies": {
-    "time-interactive": "0.7.4",
-    "d3-selection": "^2.0.0"    
+    "d3-selection": "^2.0.0",
+    "time-interactive": "github:TimeMagazineLabs/time-interactive"
   },
   "scripts": {
     "build": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=.",
     "build_verbose": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --verbose",
     "minify": "bundle-module --entry=./debug.js --name=script-min --env=node --output_dir=. --min",
     "watch": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --watch",
-	"test": "npm test"
+    "test": "npm test"
   },
   "author": "Chris Wilson",
   "license": "MIT"
