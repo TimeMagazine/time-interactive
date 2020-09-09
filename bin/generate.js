@@ -205,10 +205,10 @@ function updateOldProject() {
 
 	fs.copyFileSync(__dirname + "/../prototype/src/time-interactive.scss", PROJECT_DIR + "/src/time-interactive.scss");
 
-	mkdirp(PROJECT_DIR + "/data", function() {});
-	mkdirp(PROJECT_DIR + "/code", function() {});
-	mkdirp(PROJECT_DIR + "/docs", function() {});
-	mkdirp(PROJECT_DIR + "/img", function() {});
+	mkdirp(PROJECT_DIR + "/data").then(made => {});
+	mkdirp(PROJECT_DIR + "/code").then(made => {});
+	mkdirp(PROJECT_DIR + "/docs").then(made => {});
+	mkdirp(PROJECT_DIR + "/img").then(made => {});
 
 	ncp(__dirname + "/../prototype/gitignore", PROJECT_DIR + "/.gitignore", function (err) {
 		if (err) {
