@@ -11,10 +11,10 @@
     "time-interactive": "./bin/generate.js"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
-    "ejs": "^3.0.2",
+    "chalk": "^4.1.0",
+    "ejs": "^3.1.5",
     "minimist": "^1.2.5",
-    "mkdirp": ">=1.0.3",
+    "mkdirp": ">=1.0.4",
     "ncp": ">=2.0.0",
     "rimraf": "^3.0.2",
     "yesno": "^0.3.1"

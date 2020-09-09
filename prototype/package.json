@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "d3-selection": "^2.0.0",
-    "time-interactive": "github:TimeMagazineLabs/time-interactive"
+    "time-interactive": "github:TimeMagazine/time-interactive"
   },
   "scripts": {
     "build": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=.",
