@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,400&display=swap');	
+
 .component.interactive {
 	.media-item {
 		display: block;
@@ -7,7 +9,6 @@
 /* all interactives will be wrapped in a <div> with class "time-interactive" */
 .time-interactive {
 	/* default styles for TIME interactives */
-	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,400&display=swap');	
 	width: 100%;
 	max-width: 800px;
 	font-family: 'Roboto', sans-serif;
