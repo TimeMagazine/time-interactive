@@ -104,26 +104,28 @@ checkIfUpdating().then(() => {
 	}
 });
 
+function addOrgScripts(package) {
+	// add any organization-specific scripts
+	Object.keys(config.package).forEach(property => {
+		// console.log("Adding property", property);
+		if (!package.hasOwnProperty(property)) {
+			package[property] = config.package[property];
+			return;
+		}
+		if (typeof package[property] == "object") {
+			let joined = Object.assign(package[property], config.package[property]);
+		} else {
+			package[property] = config.package[property];
+		}
+	});
+}
+
+
 function generateNewProject() {
 	mkdirp(PROJECT_DIR).then(function() {
 		let package = JSON.parse(ejs.render(templates.pkg, data));
 
-		// add any organization-specific scripts
-		Object.keys(config.package).forEach(property => {
-			// console.log("Adding property", property);
-			if (!package.hasOwnProperty(property)) {
-				package[property] = config.package[property];
-				return;
-			}
-			if (typeof package[property] == "object") {
-				// console.log("Assigning", property);
-				// console.log(package[property], config.package[property]);
-				let joined = Object.assign(package[property], config.package[property]);
-				// console.log(joined);
-			} else {
-				package[property] = config.package[property];
-			}
-		});
+		addOrgScripts(package);
 
 		// re-render
 		package = ejs.render(JSON.stringify(package, null, 2), data);
@@ -171,27 +173,38 @@ function updateOldProject() {
 	let DEPRECATED = [ 'autoprefixer', '@babel/core', '@babel/plugin-transform-runtime', '@babel/preset-env', '@babel/runtime', 'babel-core', 'babel-loader', 'babel-plugin-add-module-exports', 'babel-plugin-transform-decorators-legacy', 'babel-plugin-transform-runtime', 'babel-polyfill', 'babel-preset-es2015', 'browserify', 'css-loader', 'cssnano', 'dsv-loader', 'ejs-loader', 'extract-text-webpack-plugin', 'file-loader', 'fs-extra', 'less', 'less-loader', 'node-csvify', 'node-lessify', 'node-sass', 'node-underscorify', 'postcss-loader', 'postcss-preset-env', 'raw-loader', 'sass-loader', 'style-loader', 'underscore-template-loader', 'url-loader', 'webpack', 'webpack-cli', 'webpack-dev-server', 'webpack-merge' ];
 
 	let package_new = JSON.parse(ejs.render(templates.pkg, data));
+	addOrgScripts(package_new);
 
-	// we're going to delicately update the old package here, touching as little as possible;
+	// we're going to delicately include the old package here
 
 	// don't touch any other prod dependencies
-	package_old.dependencies["time-interactive"] = settings.version;
+	Object.keys(package_old.dependencies).forEach(package_name => {
+		if (!package_new.dependencies.hasOwnProperty(package_name)) {
+			package_new.dependencies[package_name] = package_old.dependencies[package_name];
+			console.log(`Keeping the dependency for '${ package_name }'`);
+		} else {
+			console.log(`Updating the dependency for '${ package_name }' to ${ package_new.dependencies[package_name] }`);
+		}
+	});
 
-	delete package_old.browserify;
+	// delete package_old.browserify;
 
 	// update pre-packaged scripts
-	Object.keys(package_new.scripts).forEach(key => {
-		package_old.scripts[key] = package_new.scripts[key];
-	});
+	// Object.keys(package_new.scripts).forEach(key => {
+	// 	package_old.scripts[key] = package_new.scripts[key];
+	// });
 
-	// remove any unneeded development dependencies
+	// add any old dev dependencies unrelated to Webpack
 
-	package_old.devDependencies = package_old.devDependencies || {};
-	DEPRECATED.forEach(d => {
-		delete package_old.devDependencies[d];
-	});
-
-	package_old.main = "debug.js";
+	if (package_old.hasOwnProperty("devDependencies")) {
+		Object.keys(package_old.devDependencies).forEach(package_name => {
+			if (DEPRECATED.indexOf(package_name) === -1) {
+				package_new.devDependencies[package_name] = package_old.devDependencies[package_name];
+				console.log(`Transferring devDependency '${ package_name }'`)
+			}
+		});
+	}
+	// package_old.main = "debug.js";
 
 	// we'll overwrite these .html files since they're rarely edited and since very old ones have font calls no longer used
 
@@ -201,7 +214,8 @@ function updateOldProject() {
 	fs.writeFileSync(PROJECT_DIR + "/embed.html", ejs.render(templates.embed, data));
 
 
-	fs.writeFileSync(PROJECT_DIR + "/package.json", JSON.stringify(package_old, null, 2));
+	fs.writeFileSync(PROJECT_DIR + "/package_original.json", JSON.stringify(package_old, null, 2));
+	fs.writeFileSync(PROJECT_DIR + "/package.json", JSON.stringify(package_new, null, 2));
 
 	fs.copyFileSync(__dirname + "/../prototype/src/time-interactive.scss", PROJECT_DIR + "/src/time-interactive.scss");
 

@@ -11,6 +11,7 @@
     "d3-selection": "^2.0.0",
     "time-interactive": "github:TimeMagazine/time-interactive"
   },
+  "devDependencies": {},
   "scripts": {
     "build": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=.",
     "build_verbose": "bundle-module --entry=./debug.js --name=script --env=node --output_dir=. --verbose",
