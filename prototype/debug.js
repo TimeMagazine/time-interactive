@@ -1,5 +1,5 @@
 const time = require('time-interactive');
-import { select, selectAll, event } from 'd3-selection'; // Common convenience.
+import { select, selectAll, event } from 'd3'; // Common convenience.
 
 require("./src/time-interactive.scss");	// default styles for all interactives. Change if necessary.
 require("./src/styles.scss");			// project-specific styling

@@ -4,7 +4,7 @@ The TIME.com Interactive Bootstrapper
 [![Build Status](https://travis-ci.org/TimeMagazine/time-interactive.png)](https://travis-ci.org/TimeMagazine/time-interactive) 
 [![Dependency Status](https://david-dm.org/TimeMagazine/time-interactive.svg)](https://david-dm.org/TimeMagazine/time-interactive)
 
-v0.7.6
+v0.7.7
 
 # Introduction
 
