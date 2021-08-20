@@ -167,18 +167,6 @@
         return list[Math.floor(list.length * Math.random())];
     };
 
-    module.exports.commafy = function (val) {
-        if (typeof val !== "number") {
-            return;
-        }
-        val = parseInt(val, 10);
-
-        while (/(\d+)(\d{3})/.test(val.toString())) {
-            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
-        }
-        return val;
-    };
-
     // generate a unique GUID
     module.exports.guid = function () {
         let guid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";

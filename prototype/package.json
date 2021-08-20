@@ -8,7 +8,7 @@
     "url": "https://github.com/TimeMagazine/time-interactive.git"
   },
   "dependencies": {
-    "d3": "^7.0.0",
+    "d3": "^7.0.1",
     "time-interactive": "github:TimeMagazine/time-interactive"
   },
   "devDependencies": {},
